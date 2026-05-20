@@ -2,6 +2,8 @@
 
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { QuickbooksMCPServer } from "./server/qbo-mcp-server.js";
+import { ListClientsTool } from "./tools/list-clients.tool.js";
+import { SwitchClientTool } from "./tools/switch-client.tool.js";
 // import { ListInvoicesTool } from "./tools/list-invoices.tool.js";
 // import { CreateCustomerTool } from "./tools/create-customer.tool.js";
 import { CreateInvoiceTool } from "./tools/create-invoice.tool.js";
@@ -155,6 +157,10 @@ const main = async () => {
   RegisterTool(server, UpdatePurchaseTool);
   RegisterTool(server, DeletePurchaseTool);
   RegisterTool(server, SearchPurchasesTool);
+
+  // Multi-client management
+  RegisterTool(server, ListClientsTool);
+  RegisterTool(server, SwitchClientTool);
 
   // Start receiving messages on stdin and sending messages on stdout
   const transport = new StdioServerTransport();

@@ -1,0 +1,29 @@
+{
+  "manifest_version": "0.3",
+  "name": "quickbooks-online-mcp",
+  "display_name": "QuickBooks Online MCP",
+  "version": "1.0.0",
+  "description": "QuickBooks Online MCP server for Claude Desktop.",
+  "author": { "name": "EricGrill / local install" },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "QUICKBOOKS_CLIENT_ID": "YOUR_CLIENT_ID",
+        "QUICKBOOKS_CLIENT_SECRET": "YOUR_CLIENT_SECRET",
+        "QUICKBOOKS_REFRESH_TOKEN": "",
+        "QUICKBOOKS_REALM_ID": "",
+        "QUICKBOOKS_ENVIRONMENT": "production",
+        "QUICKBOOKS_REDIRECT_URI": "https://qbo-oauth-callback-orcin.vercel.app/api/qbo/callback"
+      }
+    }
+  },
+  "tools": [],
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": { "node": ">=18.0.0" }
+  }
+}
